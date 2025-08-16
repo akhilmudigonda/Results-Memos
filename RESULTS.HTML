@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Memo - Prank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-section {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .input-section input {
+            padding: 10px;
+            font-size: 16px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .marks-memo {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .marks-memo h3 {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .marks-memo p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .marks-memo table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .marks-memo th, .marks-memo td {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .marks-memo th {
+            background-color: #f4f4f4;
+        }
+
+        .result-text {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>GOVT. CITY COLLEGE (AUTONOMOUS)</h1>
+    <h2>Marks Memo</h2>
+</header>
+
+<div class="container">
+    <div class="input-section">
+        <input type="text" id="hallTicket" placeholder="Enter Hall Ticket Number" maxlength="16">
+        <button onclick="generateMarksMemo()" class="submit-btn">Submit</button>
+    </div>
+
+    <div class="marks-memo" id="marksMemo">
+        <h3>SEMESTER GRADE CARD</h3>
+        <p><strong>Course:</strong> M.Sc. Mathematics | Semester July 2025</p>
+        <p><strong>Roll Number:</strong> <span id="rollNumber">1084-24-505-035</span></p>
+        <p><strong>Medium:</strong> English</p>
+        <p><strong>Name:</strong> <span id="studentName">Mudigonda Akhil</span></p>
+        <p><strong>Date:</strong> <span id="currentDate"></span></p>
+
+        <table>
+            <tr>
+                <th>S.No</th>
+                <th>Subject</th>
+                <th>Credits</th>
+                <th>Grade</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Galois Theory</td>
+                <td>5</td>
+                <td id="subject1Grade">B+</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lebesgue Measure & Integration</td>
+                <td>5</td>
+                <td id="subject2Grade">B+</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Complex Analysis</td>
+                <td>5</td>
+                <td id="subject3Grade">A</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Topology</td>
+                <td>5</td>
+                <td id="subject4Grade">B</td>
+            </tr>
+        </table>
+
+        <div class="result-text" id="resultText"></div>
+        
+        <div class="details">
+            <p><strong>RESULT:</strong> <span id="result">PROMOTED</span></p>
+            <p><strong>Details of Awards of Grades:</strong></p>
+            <p>Minimum Pass Marks in Each Paper: Theory: 40%, Sem Exam: 40% (Sem Exam + IA)</p>
+            <table>
+                <tr>
+                    <th>Range of Marks</th>
+                    <th>Grade</th>
+                    <th>Grade Point</th>
+                </tr>
+                <tr>
+                    <td>90-100</td>
+                    <td>O</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>75-89</td>
+                    <td>A+</td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>65-74</td>
+                    <td>A</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>55-64</td>
+                    <td>B+</td>
+                    <td>7</td>
+                </tr>
+                <tr>
+                    <td>50-54</td>
+                    <td>B</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>45-49</td>
+                    <td>C</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>40-44</td>
+                    <td>D</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Less Than 40</td>
+                    <td>F</td>
+                    <td>0</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function generateMarksMemo() {
+        var hallTicket = document.getElementById("hallTicket").value;
+        var marksMemo = document.getElementById("marksMemo");
+        var resultText = document.getElementById("resultText");
+        var subject1Grade = document.getElementById("subject1Grade");
+        var subject2Grade = document.getElementById("subject2Grade");
+        var subject3Grade = document.getElementById("subject3Grade");
+        var subject4Grade = document.getElementById("subject4Grade");
+        var studentName = document.getElementById("studentName");
+        var rollNumber = document.getElementById("rollNumber");
+        var result = document.getElementById("result");
+        
+        // Set the current date dynamically
+        var currentDate = new Date();
+        var date = currentDate.toLocaleDateString('en-GB', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+        document.getElementById("currentDate").innerText = date;
+
+        // List of hall ticket numbers and corresponding names
+        var hallTickets = {
+            "1084-24-505-035": { name: "Mudigonda Akhil", rollNumber: "1084-24-505-035" },
+            "1084-24-505-014": { name: " Vanguri Nikhil", rollNumber: "1084-24-505-014" },
+            "1084-24-505-022": { name: "Bhimarajula Shailaja", rollNumber: "1084-24-505-022" },
+            "1084-24-505-021": { name: "Macha Saketh", rollNumber: "1084-24-505-021" },
+            "1084-24-505-023": { name: "Baddula Divya", rollNumber: "1084-24-505-023" },
+            "1084-24-505-028": { name: "K Madhu", rollNumber: "1084-24-505-028" },
+            "1084-24-505-029": { name: "Ammula Poojitha", rollNumber: "1084-24-505-029" },
+            "1084-24-505-039": { name: "Yedla Vineela", rollNumber: "1084-24-505-039" },
+            "1084-23-505-050": { name: "Pagila Nagaraju", rollNumber: "1084-23-505-050" }
+        };
+
+        // Check if the entered hall ticket is valid
+        if (hallTickets[hallTicket]) {
+            marksMemo.style.display = "block";
+            resultText.innerText = "Result: Promoted";
+            studentName.innerText = hallTickets[hallTicket].name;  // Update name
+            rollNumber.innerText = hallTickets[hallTicket].rollNumber;  // Update roll number
+
+            // Assign grades based on hall ticket number
+            if (hallTicket === "1084-24-505-014") {
+                // Nikhil
+                subject1Grade.innerText = "A";
+                subject2Grade.innerText = "C";
+                subject3Grade.innerText = "B";
+                subject4Grade.innerText = "F";
+            } else if (hallTicket === "1084-24-505-035") {
+                // Mudigonda Akhil
+                subject1Grade.innerText = "B";
+                subject2Grade.innerText = "B+";
+                subject3Grade.innerText = "C";
+                subject4Grade.innerText = "B";
+            } else if (hallTicket === "1084-24-505-022") {
+                // Rajesh
+                subject1Grade.innerText = "A";
+                subject2Grade.innerText = "A+";
+                subject3Grade.innerText = "B";
+                subject4Grade.innerText = "B+";
+            } else if (hallTicket === "1084-24-505-021") {
+                // Macha Saketh
+                subject1Grade.innerText = "A";
+                subject2Grade.innerText = "B";
+                subject3Grade.innerText = "B+";
+                subject4Grade.innerText = "A";
+            } else if (hallTicket === "1084-24-505-023") {
+                // Baddula Divya
+                subject1Grade.innerText = "A+";
+                subject2Grade.innerText = "A";
+                subject3Grade.innerText = "A";
+                subject4Grade.innerText = "A+";
+            } else if (hallTicket === "1084-24-505-028") {
+                // K Madhu
+                subject1Grade.innerText = "B";
+                subject2Grade.innerText = "B+";
+                subject3Grade.innerText = "B";
+                subject4Grade.innerText = "A";
+            } else if (hallTicket === "1084-24-505-029") {
+                // Ammula Poojitha
+                subject1Grade.innerText = "B";
+                subject2Grade.innerText = "B+";
+                subject3Grade.innerText = "A";
+                subject4Grade.innerText = "C";
+            } else if (hallTicket === "1084-24-505-039") {
+                // Yedla Vineela
+                subject1Grade.innerText = "A+";
+                subject2Grade.innerText = "B+";
+                subject3Grade.innerText = "A";
+                subject4Grade.innerText = "A+";
+            } else if (hallTicket === "1084-23-505-050") {
+                // Pagila Nagaraju
+                subject1Grade.innerText = "A";
+                subject2Grade.innerText = "B";
+                subject3Grade.innerText = "A";
+                subject4Grade.innerText = "C";
+            } else {
+                // Random grades for other students
+                var grades = ["A", "B+", "B", "C", "D"];
+                subject1Grade.innerText = grades[Math.floor(Math.random() * grades.length)];
+                subject2Grade.innerText = grades[Math.floor(Math.random() * grades.length)];
+                subject3Grade.innerText = grades[Math.floor(Math.random() * grades.length)];
+                subject4Grade.innerText = grades[Math.floor(Math.random() * grades.length)];
+            }
+
+        } else {
+            marksMemo.style.display = "block";
+            resultText.innerText = "Result: Failed";
+            result.innerText = "FAILED";
+
+            // All subjects marked as failed
+            subject1Grade.innerText = "F";
+            subject2Grade.innerText = "F";
+            subject3Grade.innerText = "F";
+            subject4Grade.innerText = "F";
+        }
+    }
+</script>
+
+</body>
+</html>
